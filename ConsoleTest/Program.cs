@@ -13,7 +13,7 @@ namespace ConsoleTest
 			Thread.Sleep(3000);
 			var time = new Stopwatch();
 			time.Start();
-			using (var page = new Page(new FileStream("test.exe", FileMode.OpenOrCreate, FileAccess.ReadWrite), 256, 300))
+			using (var page = new Page(new FileStream("test.exe", FileMode.OpenOrCreate, FileAccess.ReadWrite), 10, 300))
 			{
 				var intHolder = new int[10];
 				{
@@ -38,6 +38,13 @@ namespace ConsoleTest
 					var pageIndex = page.Write(new byte[] { 1, 2, 3, 5});
 					var items = page[pageIndex];
 					intHolder[1] = pageIndex; // 0
+				}
+
+				{
+					var hello = "Testing";
+					var pageIndex = page.Put(hello);
+					var result = page.Get<string>(pageIndex);
+					var t = "";
 				}
 			}
 			time.Stop();

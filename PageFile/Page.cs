@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace PageFile
 {
@@ -60,10 +61,15 @@ namespace PageFile
 				throw new OutOfMemoryException("No more room in the page stream");
 			}
 		}
-
+		
 		public byte[] Pad(byte[] src)
 		{
 			int pad = _blockSize;
+			return Pad (src, pad);
+		}
+
+		public byte[] Pad(byte[] src, int pad)
+		{
 			int len = (src.Length + pad - 1) / pad * pad;
 			Array.Resize(ref src, len);
 			return src;
@@ -99,6 +105,54 @@ namespace PageFile
 				}
 			}
 			return removed;
+		}
+
+		public MemoryAddress Put(byte[] data)
+		{
+			var dataEntries = Split(data);
+			var memory = new MemoryAddress();
+			memory.Positions= new int[dataEntries.Length];
+			for (int i = 0; i < dataEntries.Length; i++) {
+				memory.Positions[i] = Write (dataEntries[i]);
+			}
+			return memory;
+		}
+
+		public byte[] Get(MemoryAddress address)
+		{
+			var buffer = new byte[address.Positions.Length * _blockSize];
+			for (int i = 0; i < address.Positions.Length; i++) {
+				Buffer.BlockCopy(this[address.Positions[i]], 0, buffer, i * _blockSize, _blockSize);
+			}
+			return buffer;
+		}
+
+		public MemoryAddress Put(object data)
+		{
+			BinaryFormatter bf = new BinaryFormatter();
+			using (var memory = new MemoryStream())
+			{
+				bf.Serialize(memory, data);
+				using (BinaryReader br = new BinaryReader(memory))
+				{
+					memory.Position = 0;
+					var binary = br.ReadBytes((int)memory.Length);
+					return Put (binary);
+				}
+			}
+		}
+
+		public T Get<T>(MemoryAddress address)
+		{
+			using (MemoryStream memory = new MemoryStream())
+			{
+				var binary = Get (address);
+				memory.Write(binary, 0, binary.Length);
+				memory.Position = 0;
+				BinaryFormatter bf = new BinaryFormatter();
+				var result = bf.Deserialize(memory);
+				return (T)result;
+			}
 		}
 
 		public void Clean()
@@ -161,6 +215,24 @@ namespace PageFile
 		public void Dispose ()
 		{
 			_stream.Dispose();
+		}
+
+		private byte[][] Split(byte[] data)
+		{
+			var result = new List<byte[]>();
+			var count = (int)Math.Ceiling((double)data.Length / (double)_blockSize);
+			data = Pad (data, count * _blockSize);
+			for (int i = 0; i < count; i++) {
+				var buffer = new byte[_blockSize];
+				Buffer.BlockCopy(data, i * _blockSize, buffer, 0, buffer.Length);
+				result.Add(buffer);
+			}
+			return result.ToArray();
+		}
+
+		public class MemoryAddress
+		{
+			internal int[] Positions;
 		}
 	}
 }

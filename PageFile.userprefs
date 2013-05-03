@@ -1,17 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PageFile/Page.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ConsoleTest/Program.cs">
     <Files>
-      <File FileName="PageFile/Page.cs" Line="58" Column="7" />
-      <File FileName="iOSTest/MainView.cs" Line="52" Column="38" />
+      <File FileName="PageFile/Page.cs" Line="151" Column="25" />
+      <File FileName="iOSTest/MainView.cs" Line="27" Column="112" />
       <File FileName="iOSTest/AppDelegate.cs" Line="31" Column="33" />
-      <File FileName="ConsoleTest/Program.cs" Line="46" Column="22" />
+      <File FileName="ConsoleTest/Program.cs" Line="47" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="ConsoleTest" expanded="True" />
-          <Node name="PageFile" expanded="True" selected="True" />
+          <Node name="ConsoleTest" expanded="True">
+            <Node name="Program.cs" selected="True" />
+          </Node>
+          <Node name="iOSTest" expanded="True" />
+          <Node name="PageFile" expanded="True" />
         </State>
       </Pad>
     </Pads>
