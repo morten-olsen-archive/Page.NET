@@ -1,13 +1,19 @@
 using System;
+using System.Threading;
+using System.Diagnostics;
 using System.IO;
+using PageFile;
 
-namespace PageFile
+namespace ConsoleTest
 {
 	class MainClass
 	{
 		public static void Main (string[] args)
-		{
-			using (var page = new Page(new MemoryStream(), 30, 30))
+		{			
+			Thread.Sleep(3000);
+			var time = new Stopwatch();
+			time.Start();
+			using (var page = new Page(new FileStream("test.exe", FileMode.OpenOrCreate, FileAccess.ReadWrite), 256, 300))
 			{
 				var intHolder = new int[10];
 				{
@@ -33,9 +39,11 @@ namespace PageFile
 					var items = page[pageIndex];
 					intHolder[1] = pageIndex; // 0
 				}
-				
-				Console.ReadKey();
 			}
+			time.Stop();
+			var finalTime = new TimeSpan(time.ElapsedTicks).TotalMilliseconds;
+			Console.WriteLine(finalTime);
+			Console.ReadKey();
 		}
 	}
 }

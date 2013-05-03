@@ -1,0 +1,23 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="PageFile/Page.cs">
+    <Files>
+      <File FileName="PageFile/Page.cs" Line="58" Column="7" />
+      <File FileName="iOSTest/MainView.cs" Line="52" Column="38" />
+      <File FileName="iOSTest/AppDelegate.cs" Line="31" Column="33" />
+      <File FileName="ConsoleTest/Program.cs" Line="46" Column="22" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="ConsoleTest" expanded="True" />
+          <Node name="PageFile" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

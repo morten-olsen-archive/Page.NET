@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace PageFile
 {
@@ -45,17 +46,19 @@ namespace PageFile
 
 		public int Write(byte[] data)
 		{
-			for (int i = 0; i < _pageAlloc.Length; i++) {
-				if (!_pageAlloc[i]) {
-					var offset = i * _blockSize;
-					_stream.Position = offset;
-					_stream.Write(Pad(data), 0, _blockSize);
-					_pageAlloc[i] = true;
-					_index[i] = i;
-					return i;
+			lock(this) {
+				for (int i = 0; i < _pageAlloc.Length; i++) {
+					if (!_pageAlloc[i]) {
+						var offset = i * _blockSize;
+						_stream.Position = offset;
+						_stream.Write(Pad(data), 0, _blockSize);
+						_pageAlloc[i] = true;
+						_index[i] = i;
+						return i;
+					}
 				}
+				throw new OutOfMemoryException("No more room in the page stream");
 			}
-			throw new OutOfMemoryException("No more room in the page stream");
 		}
 
 		public byte[] Pad(byte[] src)
@@ -106,6 +109,20 @@ namespace PageFile
 				_stream.Position = 0;
 				_stream.Write(new byte[Size], 0, Size);
 			}
+		}
+
+		public KeyValuePair<int, byte[]>[] GetItems(int offset, int count) {
+			var found = 0;
+			var items = new KeyValuePair<int, byte[]>[count];
+			for (int i = 0; i < _pageAlloc.Length; i++) {
+				if (_pageAlloc[i]) {
+					if (found >= offset) {
+						items[found - offset] = new KeyValuePair<int, byte[]>(_index[i], this[_index[i]]);
+					}
+					found++;
+				}
+			}
+			return items;
 		}
 
 		public void CleanUp()
