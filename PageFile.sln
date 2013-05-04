@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageFile", "PageFile\PageFile.csproj", "{6C20A284-E529-45E1-A5E1-D4ACD9781A0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iOSTest", "iOSTest\iOSTest.csproj", "{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{003BB085-C273-437A-886C-001BB3B9FC17}"
 EndProject
 Global
@@ -35,22 +33,6 @@ Global
 		{003BB085-C273-437A-886C-001BB3B9FC17}.Release|iPhoneSimulator.Build.0 = Release|iPhone
 		{003BB085-C273-437A-886C-001BB3B9FC17}.Release|x86.ActiveCfg = Release|iPhone
 		{003BB085-C273-437A-886C-001BB3B9FC17}.Release|x86.Build.0 = Release|iPhone
-		{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
-		{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
-		{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
-		{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}.AppStore|iPhone.Build.0 = AppStore|iPhone
-		{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}.Debug|iPhone.ActiveCfg = Debug|iPhone
-		{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}.Debug|iPhone.Build.0 = Debug|iPhone
-		{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}.Debug|x86.ActiveCfg = Debug|iPhoneSimulator
-		{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}.Debug|x86.Build.0 = Debug|iPhoneSimulator
-		{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}.Release|iPhone.ActiveCfg = Release|iPhone
-		{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}.Release|iPhone.Build.0 = Release|iPhone
-		{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}.Release|x86.ActiveCfg = Release|iPhoneSimulator
-		{64E4A1F2-BAF5-44C3-910D-8311EAC91CCE}.Release|x86.Build.0 = Release|iPhoneSimulator
 		{6C20A284-E529-45E1-A5E1-D4ACD9781A0F}.Ad-Hoc|iPhone.ActiveCfg = Debug|x86
 		{6C20A284-E529-45E1-A5E1-D4ACD9781A0F}.Ad-Hoc|iPhone.Build.0 = Debug|x86
 		{6C20A284-E529-45E1-A5E1-D4ACD9781A0F}.AppStore|iPhone.ActiveCfg = Debug|x86

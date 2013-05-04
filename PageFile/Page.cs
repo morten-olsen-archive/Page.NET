@@ -202,7 +202,7 @@ namespace PageFile
 				_pageAlloc = newAlloc;
 			}
 		}
-
+		
 		public void Remove(int index)
 		{
 			var realIndex = _index[index];
@@ -210,6 +210,13 @@ namespace PageFile
 			var offset = _blockSize * realIndex;
 			_stream.Position = offset;
 			_stream.Write(new byte[_blockSize], 0, _blockSize);
+		}
+
+		public void Remove(MemoryAddress address)
+		{
+			foreach (var position in address.Positions) {
+				Remove(position);
+			}
 		}
 
 		public void Dispose ()

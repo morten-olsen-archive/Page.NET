@@ -1,10 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="ConsoleTest/Program.cs">
     <Files>
-      <File FileName="PageFile/Page.cs" Line="151" Column="25" />
-      <File FileName="iOSTest/MainView.cs" Line="27" Column="112" />
-      <File FileName="iOSTest/AppDelegate.cs" Line="31" Column="33" />
+      <File FileName="PageFile/Page.cs" Line="1" Column="1" />
+      <File FileName="iOSTest/MainView.cs" Line="1" Column="1" />
+      <File FileName="iOSTest/AppDelegate.cs" Line="1" Column="1" />
       <File FileName="ConsoleTest/Program.cs" Line="47" Column="1" />
     </Files>
     <Pads>
