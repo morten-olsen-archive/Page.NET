@@ -25,7 +25,7 @@ namespace ConsoleTest
 					Console.Write(".");
 				}
 			}
-			var finalTime = new TimeSpan(time.ElapsedTicks).TotalMilliseconds;
+			var finalTime = time.ElapsedMilliseconds;
 			Console.WriteLine(": {0} ms", finalTime);
 		}
 
@@ -80,7 +80,7 @@ namespace ConsoleTest
 				
 				run = 0;
 				TimedRun("Get large byte[]", () => {
-					page.Get(stringIndex[run]);
+                    stringIndex[run].Get();
 					run++;
 				}, 10);
 				
@@ -98,9 +98,21 @@ namespace ConsoleTest
 				
 				run = 0;
 				TimedRun("Get large object", () => {
-					page.Get<SampleObject>(stringIndex[run]);
+                    stringIndex[run].Get<SampleObject>();
 					run++;
 				}, 10);
+
+                TimedRun("Clean", () =>
+                {
+                    page.Clean();
+                    run++;
+                }, 1);
+
+                TimedRun("Write and release", () =>
+                {
+                    using (var result = page.Put("Hello World"))
+                    { }
+                }, 1000);
 			}
 		}
 
@@ -118,7 +130,9 @@ namespace ConsoleTest
 		public static void Main (string[] args)
 		{			
 			TestPage("File", new FileStream("page.bin", FileMode.OpenOrCreate, FileAccess.ReadWrite));
-			TestPage("Memory", new MemoryStream());
+            TestPage("Memory", new MemoryStream());
+                
+			StartSection("Done");
 			Console.ReadKey();
 		}
 	}

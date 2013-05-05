@@ -1,15 +1,16 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("PageFile")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Page.NET")]
+[assembly: AssemblyDescription("A library for creating pagefiles from streams")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("morten")]
+[assembly: AssemblyCopyright("Morten Olsen 2013 - morten@olsen.io")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -25,3 +26,4 @@ using System.Runtime.CompilerServices;
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
 
+[assembly: GuidAttribute("8a17840e-61aa-42ff-81c9-514fdd24e193")]
